@@ -1,6 +1,10 @@
 {% extends 'project/base.html'%}
 {% load bootstrap4 %} 
 {% load static %}
+{% block title%}
+{{user.username}}
+{% endblock%}
+
 {% block styles %}
         {% bootstrap_css %}
         <link rel="stylesheet" href="{%static 'css/register.css'%}"  >
@@ -36,9 +40,8 @@
                             {% if user.profile.bio%}
                             <p class="card-text">About Me: {{user.profile.bio}}</p>
                             {%endif%} 
-                            {% if request.user.id is user.id%}
-                            <a href="#" class="btn btn-success btn-sm"><small>Update Settings</small></a>
-                            {% endif %}
+                
+                            <a href="{% url  'project:update_settings' %}" class="btn btn-success btn-sm"><small>Update Settings</small></a>
                         </div>
                     </div>
                 </div>
@@ -58,7 +61,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{image.title}}</h5>
                                 <p>By <a href="{% url 'project:posted_by' image.user.id%}">{{image.user.username}}</a><span class="float-right">From {{image.location}}</span></p>
-                                <div class="text-center"><a class="btn button text-center btn-block"  href="{{image.link}}">Visit Site</a></div>
+                                <div class="text-center"><a class="btn button text-center btn-block"  href="{{image.link}}">View site details</a></div>
                             </div>
                         </div>  
                     </div>               
