@@ -101,6 +101,7 @@ def index(request):
 #user profile
 @login_required
 def profile(request):
+    # profile = Profile.objects.create(user=request.user)
     return render(request,'project/profile.html')
 
 
@@ -185,3 +186,5 @@ def update_settings(request):
 #API PAGE
 def api(request):
     return render(request,'project/api.html')
+
+
